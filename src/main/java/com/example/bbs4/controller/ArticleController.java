@@ -4,6 +4,7 @@ package com.example.bbs4.controller;
 import com.example.bbs4.domain.dto.ArticleDto;
 import com.example.bbs4.domain.entity.Article;
 import com.example.bbs4.repository.Articlerepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,7 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping("/article")
+@Slf4j
 public class ArticleController {
 
     private final Articlerepository articlerepository;
@@ -68,6 +70,19 @@ public class ArticleController {
     }
 
 
+    @PostMapping("/{id}/update") // edit 에서 sumit 누르면
+    public String update(@PathVariable Long id, ArticleDto articleDto) { // dto에 id 생성자를 뚫어주지 않으면 update가 아니라 insert가 됨
+        log.info("title:{} content:{}", articleDto.getTitle(), articleDto.getContent()); //변경된 값 log 출력
+        Article article = articlerepository.save(articleDto.toEntity()); // id 값이 들어와서 해당 id 의 title, content 내용이 entity 저장 됨 (insert가 아니라 update)
+        return String.format("redirect:/article/%d", article.getId()); // 수정된 값의 show 로 이동하면 되니까 view 로 전달할 값이 없어서 model 사용 안함
+    }
+
+    @GetMapping("/{id}/delete")
+    public String delete(@PathVariable Long id, Model model) {
+        articlerepository.deleteById(id);
+        model.addAttribute("message", String.format("id: %d가 지워졌습니다.", id));
+        return "redirect:/article" ;
+    }
 
 
 }
