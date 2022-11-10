@@ -1,0 +1,11 @@
+여기는 Edit Page입니다.
+{{#articles}}
+    <form action="/article/{{id}}/update" method="post">
+        <input type="text" name="title" value="{{title}}" />
+        <textarea rows="3" name="content">{{content}}</textarea>
+            <input {{/articles}} type="submit"/>
+
+</form>
+
+<a href="/article/{{id}}">1개 조회 페이지</a>
+<a href="/article">목록</a>

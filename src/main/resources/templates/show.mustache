@@ -1,0 +1,28 @@
+{{>layout/header}}
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Title</th>
+        <th scope="col">Content</th>
+
+    </tr>
+    </thead>
+
+    <tbody>
+    {{#articles}}
+        <tr>
+            <th scope="row"> {{id}} </th>
+            <td> {{title}} </td>
+            <td>{{content}}</td>
+        </tr>
+    {{/articles}}
+
+    </tbody>
+</table>
+<a href="/article/{{id}}/edit" class="btn btn-primary">Edit</a>
+<a href="/article/{{id}}/delete" class="btn btn-danger">Delete</a>
+
+<a href="/article">Article List</a>
+<a href="/article/new">New Article</a>
+{{>layout/footer}}
