@@ -8,9 +8,9 @@ import java.time.LocalDateTime;
 public class Product {
 @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Long Number;
+    private  Long number;
 
-    @Column(nullable = false) // Not null 찍힘
+    @Column(nullable = false)// Not null 찍힘
     private  String name;
 
     @Column(nullable = false)
