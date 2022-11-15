@@ -4,10 +4,12 @@ import com.example.bbs4.domain.entity.Article;
 import com.example.bbs4.domain.entity.Hospital;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 public class HospitalDto {
     private Integer id;
     private String openServiceName;
@@ -26,13 +28,5 @@ public class HospitalDto {
     private int totalNumberOfBeds;
     private float totalAreaSize;
 
-public Hospital toEntity (){
-    return new Hospital (id, openServiceName,openLocalGovernmentCode ,
-            managementNumber,licenseDate
-            ,businessStatus, businessStatusCode , phone
-    ,fullAddress, roadNameAddress, hospitalName
-    ,businessTypeName, healthcareProviderCount, patientRoomCount
-    ,totalNumberOfBeds, totalAreaSize);
-}
 
 }

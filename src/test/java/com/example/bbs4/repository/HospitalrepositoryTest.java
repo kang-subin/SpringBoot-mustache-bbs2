@@ -30,5 +30,28 @@ class HospitalrepositoryTest {
             System.out.println(hospital.getHospitalName());
         }
     }
+
+    @Test
+    @DisplayName("병상 수 조회")
+    void findBypatientRoomCountBetween(){
+        List<Hospital> hospitals = hospitalrepository.findBypatientRoomCountBetween(5 ,19);
+        for (var hospital : hospitals) {
+            System.out.printf("%s %d\n",hospital.getHospitalName(), hospital.getPatientRoomCount());
+        }
+    }
+
+
+    @Test
+    void findByPatientRoomCountBetweenOrderByPatientRoomCountDesc(){
+        List<Hospital>hospitals = hospitalrepository.findByPatientRoomCountBetweenOrderByPatientRoomCountDesc(5, 19);
+        for (var hospital: hospitals) {
+            System.out.println(hospital.getBusinessTypeName());
+        }
+    }
 }
+
+
+
+
+
 
