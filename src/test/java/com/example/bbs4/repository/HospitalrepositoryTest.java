@@ -48,6 +48,14 @@ class HospitalrepositoryTest {
             System.out.println(hospital.getBusinessTypeName());
         }
     }
+
+
+
+
+
+
+
+
 }
 
 

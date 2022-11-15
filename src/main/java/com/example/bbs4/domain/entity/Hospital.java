@@ -22,15 +22,15 @@ public class Hospital {
     private Integer patientRoomCount;
     private Integer totalNumberOfBeds;
     private String businessTypeName;
+    private Integer businessStatusCode;
     private Float totalAreaSize;
 
 
-    // HospitalResponse Dto로 만들어주는 부분
-    public static HospitalResponse of(Hospital hospital) {
+    public static HospitalResponse of(Hospital hospital) { // HospitalResponse Dto로 만들어주는 부분  static 한 이유 가독성을 위해서
         return new HospitalResponse (hospital.getId(),
                 hospital.getRoadNameAddress(), hospital.getHospitalName(),
                 hospital.getPatientRoomCount(), hospital.getTotalNumberOfBeds(), hospital.getBusinessTypeName(),
-                hospital.getTotalAreaSize());
+                hospital.getTotalAreaSize(), hospital.businessTypeName);
     }
 }
 
