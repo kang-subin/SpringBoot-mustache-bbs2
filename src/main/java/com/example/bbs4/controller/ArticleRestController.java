@@ -24,12 +24,11 @@ public class ArticleRestController {
     }
 
 
-    @PostMapping("/post")
-    public ResponseEntity <ArticleAddResponsedto> addArticle(@RequestBody ArticleAddRequestdto dto){
-    ArticleAddResponsedto responsedto = articleService.add(dto);
-    return ResponseEntity.ok().body(responsedto);
+    @PostMapping
+    public ResponseEntity<ArticleAddResponsedto> addArticle(ArticleAddRequestdto dto) {
+        ArticleAddResponsedto response = articleService.add(dto);
+        return ResponseEntity.ok().body(response);
     }
-
 
 }
 

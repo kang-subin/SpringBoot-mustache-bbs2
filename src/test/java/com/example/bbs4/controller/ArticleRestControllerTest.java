@@ -60,6 +60,7 @@ class ArticleRestControllerTest {
         ArticleAddRequestdto dto = new ArticleAddRequestdto("제목입니다.", "내용입니다.");
 
         given(articleService.add(any())).willReturn(new ArticleAddResponsedto(1l, dto.getTitle(), dto.getContent()));
+
         mockMvc.perform(post("/api/v1/articles")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsBytes(dto))
@@ -72,7 +73,6 @@ class ArticleRestControllerTest {
                 .andDo(print());
     }
 }
-
 
 
 
