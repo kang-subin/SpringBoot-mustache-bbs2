@@ -2,10 +2,12 @@ package com.example.bbs4.domain.entity;
 
 import com.example.bbs4.domain.dto.ArticleDto;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
