@@ -17,10 +17,10 @@ public class HospitalService {
         this.hospitalrepository = hospitalrepository;
     }
 
-public HospitalResponse getHospital (Integer id) {
+public HospitalResponse getHospital (Integer id) { // db값을 rp로 넘기는 메소드
     Optional<Hospital> optHospital = hospitalrepository.findById(id); // rp를 통해서 entity db 값을 가져옴
-    Hospital hospital = optHospital.get();
-    HospitalResponse hospitalResponse = Hospital.of(hospital); // hospital로 받아온 값을 rp로 넘김
+    Hospital hospital = optHospital.get();// ?
+    HospitalResponse hospitalResponse = Hospital.of(hospital); // hospital로 받아온 값을 rp로 넘김, 넘기는 값 중에서 BusinessStatusCode 의 경우 아래 로 가공해서 넘김
 
     if (hospital.getBusinessStatusCode() == 13) { // hospital에서 받아온 값이 13일 경우
         hospitalResponse.setBusinessStatusName("영업중"); // rp에 영업중이라 넘김
