@@ -59,14 +59,18 @@ class ArticleRestControllerTest {
     void add() throws Exception {
         ArticleAddRequestdto dto = new ArticleAddRequestdto("제목입니다.", "내용입니다.");
 
-        given(articleService.add(any())).willReturn(new ArticleAddResponsedto(1l, dto.getTitle(), dto.getContent()));
+        //처음에 dto 값 설정하고 이걸 json 형태로 바꾼 후 service.add(dto)로 들어가게 되면 매개변수 dto는 처음 설정한 dto와 같은 해시값을 가진 dto가 아님 여기에는 json 형태로 변경한 dto 객체가 들어가야함 그래서
+        // 에러발생한듯? 따라서 any(뭘넘겨도 통과시켜주는 메소드?)로 바꿔준듯?
+
+        given(articleService.add(any())).willReturn(new ArticleAddResponsedto(2l, dto.getTitle(), dto.getContent()));
+             // service, repository 단계를 안거쳤으니까 임의로 지정해준 id 값이 1L인듯?
 
         mockMvc.perform(post("/api/v1/articles")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsBytes(dto))
-                )
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id").exists())
+                        .content(objectMapper.writeValueAsBytes(dto))) // 요청하는 Json 타입 (dto)내용
+                .andExpect(status().isOk()) // 요청으로 얻어오는 결과 기대 값
+                .andExpect(jsonPath("$.id").exists())// 기대값 체크하는데 json key 값이 id 가 있는가? (있다면 이는 요청한 후 응답을 잘 가져온 것으로 간주)
+                .andExpect(jsonPath("$.id").value(2))
                 .andExpect(jsonPath("$.title").exists())
                 .andExpect(jsonPath("$.title").value("제목입니다."))
                 .andExpect(jsonPath("$.content").exists())

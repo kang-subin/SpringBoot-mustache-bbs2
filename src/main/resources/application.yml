@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 8089
   servlet:
     encoding:
       force-response: true
@@ -14,6 +14,12 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/likelion-db
     username: root
     password:
+
+      jwt:
+        token:
+          secret: hello
+
+
   jpa:
     show-sql: true
     database-platform: org.hibernate.dialect.MySQL8Dialect
