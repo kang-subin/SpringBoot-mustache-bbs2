@@ -1,4 +1,3 @@
-# SpringBoot-mustache-bbs2
 
 # Entity 다이어그램
 
